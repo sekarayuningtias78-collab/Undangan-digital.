@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Undangan Pernikahan</title>
+  <style>
+    body { font-family: 'Poppins', sans-serif; margin: 0; padding: 0; background: #faf6f1; color: #333; }
+    header { background: url('img/foto1.jpg') no-repeat center/cover; height: 100vh;
+             display: flex; justify-content: center; align-items: center; text-align: center;
+             color: white; flex-direction: column; }
+    header h1 { font-size: 3em; margin: 0; }
+    header p { font-size: 1.2em; margin-top: 10px; }
+    section { padding: 50px 20px; text-align: center; }
+    h2 { color: #b85c5c; }
+    .countdown { font-size: 1.5em; font-weight: bold; margin-top: 20px; }
+    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-top: 20px; }
+    .gallery img { width: 100%; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
+    .map iframe { width: 100%; height: 300px; border: none; border-radius: 10px; margin-top: 20px; }
+    footer { background: #b85c5c; color: white; padding: 20px; text-align: center; }
+  </style>
+</head>
+<body>
+
+  <!-- Musik -->
+  <audio autoplay loop>
+    <source src="music/musik.mp3" type="audio/mp3">
+  </audio>
+
+  <!-- Header -->
+  <header>
+    <h1>Ani & Budi</h1>
+    <p>Undangan Pernikahan</p>
+  </header>
+
+  <!-- Detail Acara -->
+  <section>
+    <h2>Detail Acara</h2>
+    <p>Dengan memohon rahmat Allah SWT, kami mengundang Anda untuk hadir dalam acara pernikahan kami:</p>
+    <h3>Ani & Budi</h3>
+    <p><b>Tanggal:</b> Minggu, 20 Oktober 2025<br>
+       <b>Waktu:</b> 10.00 WIB<br>
+       <b>Tempat:</b> Gedung Graha Cinta, Jakarta</p>
+
+    <div class="countdown" id="countdown"></div>
+  </section>
+
+  <!-- Galeri -->
+  <section>
+    <h2>Galeri Foto</h2>
+    <div class="gallery">
+      <img src="img/foto1.jpg" alt="Foto 1">
+      <img src="img/foto2.jpg" alt="Foto 2">
+      <img src="img/foto3.jpg" alt="Foto 3">
+    </div>
+  </section>
+
+  <!-- Lokasi -->
+  <section class="map">
+    <h2>Lokasi Acara</h2>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!..."></iframe>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Terima kasih atas doa dan kehadirannya 🙏<br>Ani & Budi</p>
+  </footer>
+
+  <!-- Countdown Script -->
+  <script>
+    const eventDate = new Date("Oct 20, 2025 10:00:00").getTime();
+    const countdown = document.getElementById("countdown");
+
+    setInterval(function() {
+      const now = new Date().getTime();
+      const distance = eventDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdown.innerHTML = days + " hari " + hours + " jam " + minutes + " menit " + seconds + " detik ";
+
+      if (distance < 0) {
+        countdown.innerHTML = "Acara sudah dimulai 🎉";
+      }
+    }, 1000);
+  </script>
+
+</body>
+</html>
